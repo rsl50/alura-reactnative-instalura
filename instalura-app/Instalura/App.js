@@ -33,6 +33,7 @@ const App = () => {
             <Foto
               urlFoto={item.url}
               descricao={item.description}
+              quantidadeLikes={item.likes}
             /> 
           </Fragment>    
         }
