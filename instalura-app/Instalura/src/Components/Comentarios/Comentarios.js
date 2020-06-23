@@ -5,19 +5,34 @@ import {
     Text,
     TouchableOpacity,
     View,
-    FlatList
+    FlatList,
+    TextInput
 } from 'react-native';
+import estilo from '../Comentarios/estilo';
 
 const Comentarios = ( {comentarios} ) => {
     
     return (
-        <FlatList
-            data={comentarios}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item }) =>
-            <Text>{item.text}</Text>
-        }
-        />
+        <Fragment>
+            <FlatList
+                data={comentarios}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={({ item }) =>
+                <Text>{item.text}</Text>}
+            />
+            <View style={estilo.naMesmaLinha}>
+                <TextInput 
+                    placeholder={"Deixe seu comentário..."}
+                    //faz o textinput ocupar toda a largura da tela
+                    style={{flex:1}}
+                />
+                <TouchableOpacity>
+                    <Image 
+                        source={require("../../../res/img/send.png")}
+                        style={estilo.imgSend}/>
+                </TouchableOpacity>
+            </View>
+        </Fragment>
     );
 
 };
