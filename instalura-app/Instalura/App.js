@@ -7,14 +7,34 @@
  */
 
 import React, {Fragment} from 'react';
-import {Text} from 'react-native'
+import {
+  Text,
+  Image, 
+  ScrollView,
+  Dimensions
+} from 'react-native'
+
+const largura = Dimensions.get("screen").width
 
 const App = () => {
   return (
-    <Fragment>
+    <ScrollView>
       <Text>Robson</Text>
-    <Text>Marina</Text>
-    </Fragment>    
+      <Image 
+        source={require("./res/img/alura.jpg")}
+        style={{
+          width:largura,
+          height:largura
+        }}
+      />
+      <Text>Julia</Text>
+      <Image source={require("./res/img/alura.jpg")}
+        style={{
+          width:largura,
+          height:largura
+        }}
+      />
+    </ScrollView>    
   )
 };
 
