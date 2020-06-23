@@ -8,6 +8,7 @@ import {
 import { Cabecalho } from './src/Components/Cabecalho';
 import {Foto} from './src/Components/Foto'
 import lerFotos from './src/api/feed';
+import { Comentarios } from './src/Components/Comentarios';
 
 const App = () => {
   //variavel do meu estado: fotos
@@ -35,6 +36,7 @@ const App = () => {
               descricao={item.description}
               quantidadeLikes={item.likes}
             /> 
+            <Comentarios comentarios={item.comentarios}/>
           </Fragment>    
         }
       />

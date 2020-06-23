@@ -8,21 +8,16 @@ import {
 } from 'react-native';
 
 import estilo from "./estilo";
+import { curtirFoto, imgLike } from '../../api/curtidas';
 
 const Foto = ({urlFoto, descricao, quantidadeLikes}) =>{
     const [curtiu, setCurtiu] = useState(false);
     const [likes, setLikes] = useState(quantidadeLikes)
 
-    const curtirFoto = () => {
-        let qtd = likes
-        if (curtiu) {
-            qtd--
-        } else {
-            qtd++
-        }
-
+    const clicouCurtir = () => {
+        const [novoEstadoCurtiu, qtd] = curtirFoto(curtiu, likes)
         setLikes(qtd)
-        setCurtiu(!curtiu)
+        setCurtiu(novoEstadoCurtiu)
     }
 
     return (
@@ -33,9 +28,9 @@ const Foto = ({urlFoto, descricao, quantidadeLikes}) =>{
             />
             <Text>{descricao}</Text>
             <View style={estilo.viewLike}>
-                <TouchableOpacity onPress={curtirFoto}>
+                <TouchableOpacity onPress={clicouCurtir}>
                     <Image 
-                        source={ImgLike(curtiu)} 
+                        source={imgLike(curtiu)} 
                         style={estilo.like}
                     />
                 </TouchableOpacity>
@@ -45,12 +40,5 @@ const Foto = ({urlFoto, descricao, quantidadeLikes}) =>{
     );
 }
 
-const ImgLike = (curtiu) => {
-    if (curtiu) {
-        return require("../../../res/img/s2-checked.png")
-    } else {
-        return require("../../../res/img/s2.png")
-    }    
-}
 
 export default Foto;
