@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Fragment} from 'react';
 
 import {
@@ -13,8 +5,8 @@ import {
   FlatList
 } from 'react-native';
 
-import Cabecalho from './src/Components/Cabecalho';
-import Foto from './src/Components/Foto'
+import { Cabecalho } from './src/Components/Cabecalho';
+import {Foto} from './src/Components/Foto'
 
 const informacoes = [
   {id:1, usuario:"Robson"},
