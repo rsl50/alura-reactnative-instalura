@@ -12,7 +12,8 @@ import {
   Image, 
   ScrollView,
   Dimensions,
-  StyleSheet
+  StyleSheet,
+  FlatList
 } from 'react-native'
 
 const largura = Dimensions.get("screen").width
@@ -25,15 +26,18 @@ const informacoes = [
 const App = () => {
   return (
     <ScrollView>
-      {informacoes.map(foto =>
-        <Fragment>
-          <Text>{foto.usuario}</Text>
-          <Image 
-            source={require("./res/img/alura.jpg")}
-            style={estilo.imagem}
-          />       
-        </Fragment>
-      )}
+      <FlatList
+        data={informacoes}
+        renderItem={({item}) => 
+          <Fragment>
+            <Text>{item.usuario}</Text>
+            <Image 
+              source={require("./res/img/alura.jpg")}
+              style={estilo.imagem}
+            />       
+          </Fragment>    
+        }
+      />
     </ScrollView>    
   )
 };
