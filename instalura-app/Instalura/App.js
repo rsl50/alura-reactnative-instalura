@@ -15,12 +15,13 @@ import {
   StyleSheet,
   FlatList
 } from 'react-native'
+import Cabecalho from './src/Components/Cabecalho';
 
 const largura = Dimensions.get("screen").width
 const informacoes = [
-  {usuario:"Robson"},
-  {usuario:"Julia"},
-  {usuario:"Ricardo"},
+  {id:1, usuario:"Robson"},
+  {id:2, usuario:"Julia"},
+  {id:3, usuario:"Ricardo"},
 ]
 
 const App = () => {
@@ -28,9 +29,10 @@ const App = () => {
     <ScrollView>
       <FlatList
         data={informacoes}
-        renderItem={({item}) => 
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) =>
           <Fragment>
-            <Text>{item.usuario}</Text>
+            <Cabecalho nomeUsuario={item.usuario} />
             <Image 
               source={require("./res/img/alura.jpg")}
               style={estilo.imagem}
