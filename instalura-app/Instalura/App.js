@@ -11,7 +11,8 @@ import {
   Text,
   Image, 
   ScrollView,
-  Dimensions
+  Dimensions,
+  StyleSheet
 } from 'react-native'
 
 const largura = Dimensions.get("screen").width
@@ -22,21 +23,21 @@ const App = () => {
       <Text>Robson</Text>
       <Image 
         source={require("./res/img/alura.jpg")}
-        style={{
-          width:largura,
-          height:largura
-        }}
+        style={estilo.imagem}
       />
       <Text>Julia</Text>
       <Image source={require("./res/img/alura.jpg")}
-        style={{
-          width:largura,
-          height:largura
-        }}
+        style={estilo.imagem}
       />
     </ScrollView>    
   )
 };
 
+const estilo = StyleSheet.create({
+  imagem:{
+    width:largura,
+    height:largura
+  }
+})
 
 export default App;
