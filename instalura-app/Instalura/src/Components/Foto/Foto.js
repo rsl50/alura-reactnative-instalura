@@ -15,8 +15,22 @@ const Foto = ({urlFoto, descricao}) =>{
                 style={estilo.imagem}
             />
             <Text>{descricao}</Text>
+            <Image 
+                source={pegarImgLike(1)} 
+                style={estilo.like}
+            />
         </Fragment>
     );
 }
+
+const pegarImgLike = (quantidadeLikes) => {
+    if (quantidadeLikes > 0) {
+        return require("../../../res/img/s2-checked.png")
+    } else {
+        return require("../../../res/img/s2.png")
+    }
+    
+}
+
 
 export default Foto;
