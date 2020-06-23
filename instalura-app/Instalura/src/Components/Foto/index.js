@@ -1,23 +1,21 @@
 import React from 'react';
 
 import {
-    Text,
     Image, 
     View
 } from 'react-native';
 
 import estilo from "./estilo";
 
-const Cabecalho = ({nomeUsuario}) =>{
+const Foto = () =>{
     return (
-        <View style={estilo.cabecalho}>
+        <View style={estilo.imagem}>
             <Image 
                 source={require("../../../res/img/alura.jpg")} 
-                style={estilo.fotoUsuario}
+                style={estilo.imagem}
             />
-            <Text>{nomeUsuario}</Text>
         </View>
     );
 }
 
-export default Cabecalho;
+export default Foto;
