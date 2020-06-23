@@ -7,14 +7,14 @@ import {
 
 import estilo from "./estilo";
 
-const Foto = () =>{
+const Foto = ({urlFoto, descricao}) =>{
     return (
         <Fragment>
             <Image 
-                source={require("../../../res/img/alura.jpg")} 
+                source={{uri : urlFoto}} 
                 style={estilo.imagem}
             />
-            <Text>Descrição da Foto</Text>
+            <Text>{descricao}</Text>
         </Fragment>
     );
 }
