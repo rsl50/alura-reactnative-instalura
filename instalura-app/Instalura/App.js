@@ -1,9 +1,6 @@
 import React, {Fragment, useState, useEffect} from 'react';
 
-import {
-  ScrollView,
-  FlatList
-} from 'react-native';
+import { FlatList } from 'react-native';
 
 import { Cabecalho } from './src/Components/Cabecalho';
 import {Foto} from './src/Components/Foto'
@@ -21,7 +18,6 @@ const App = () => {
   },[])
 
   return (
-    <ScrollView>
       <FlatList
         data={fotos}
         keyExtractor={(item) => item.id.toString()}
@@ -40,7 +36,6 @@ const App = () => {
           </Fragment>    
         }
       />
-    </ScrollView>    
   )
 };
 

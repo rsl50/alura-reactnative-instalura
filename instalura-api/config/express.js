@@ -34,15 +34,14 @@ const express = require("express"),
     feedRoutes
   } = require("../app/routes");
 
-const uploadDir = "./uploads";
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir);
-  fs.mkdirSync(uploadDir + "/imgs");
-}
+const uploadDir = path.join(__dirname, "..", "uploads");
+const imgsDir = path.join(uploadDir, "imgs");
+// recursive: cria "uploads/imgs" mesmo quando "uploads/" já existe
+fs.mkdirSync(imgsDir, { recursive: true });
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
-    cb(null, "uploads/imgs");
+    cb(null, imgsDir);
   },
   filename: function(req, file, cb) {
     cb(null, `${uuidv4()}${path.extname(file.originalname)}`);
@@ -64,7 +63,7 @@ const corsOptions = {
   exposedHeaders: ["x-access-token"]
 };
 
-app.use("/static", express.static("uploads"));
+app.use("/static", express.static(uploadDir));
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
