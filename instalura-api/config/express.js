@@ -25,7 +25,7 @@ const express = require("express"),
   cors = require("cors"),
   db = require("./database"),
   multer = require("multer"),
-  uuidv4 = require("uuid/v4"),
+  { randomUUID: uuidv4 } = require("crypto"),
   fs = require("fs"),
   {
     commentRoutes,

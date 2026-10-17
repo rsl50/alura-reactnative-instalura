@@ -1,5 +1,5 @@
 const { PhotoDao, UserDao } = require("../infra"),
-  jimp = require("jimp"),
+  { Jimp } = require("jimp"),
   path = require("path"),
   fs = require("fs"),
   unlink = require("util").promisify(fs.unlink);
@@ -38,13 +38,11 @@ api.addUpload = async (req, res) => {
   console.log("Photo data", req.body);
   console.log("File info", req.file);
 
-  const image = await jimp.read(req.file.path);
+  // jimp >= 1.x: a rotação EXIF é aplicada automaticamente na leitura
+  const image = await Jimp.read(req.file.path);
 
-  await image
-    .exifRotate()
-    .cover(460, 460)
-    .autocrop()
-    .write(req.file.path);
+  image.cover({ w: 460, h: 460 }).autocrop();
+  await image.write(req.file.path);
 
   const photo = req.body;
   photo.url = path.basename(req.file.path);
